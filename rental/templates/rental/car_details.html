@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Details - {{ car.make }} {{ car.model }}</title>
+</head>
+<body>
+    <h1>Car Details</h1>
+    <h2>{{ car.year }} {{ car.make }} {{ car.model }}</h2>
+    <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }}">
+    <p>Price per day: ${{ car.price_per_day }}</p>
+    <p>Available: {% if car.available %}Yes{% else %}No{% endif %}</p>
+    <!-- Add more details as needed -->
+    <p>Specifications:</p>
+    <ul>
+        <li>Engine: {{ car.engine }}</li>
+        <li>Transmission: {{ car.transmission }}</li>
+        <li>Color: {{ car.color }}</li>
+        <!-- Add more fields from your Car model -->
+    </ul>
+    <!-- Add rental options, images, or additional information -->
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>

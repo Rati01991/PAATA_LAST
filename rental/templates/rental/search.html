@@ -1,0 +1,26 @@
+<!-- rental/templates/rental/search.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Cars</title>
+</head>
+<body>
+    <h1>Search Cars</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+    
+    <h2>Search Results</h2>
+    <ul>
+        {% for car in cars %}
+            <li>{{ car.year }} {{ car.make }} {{ car.model }}</li>
+        {% empty %}
+            <li>No cars found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Your Car</title>
+</head>
+<body>
+    <h1>Delete Your Car</h1>
+    <p>Are you sure you want to delete "{{ car.year }} {{ car.make }} {{ car.model }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>

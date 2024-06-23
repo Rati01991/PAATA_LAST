@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Cars</title>
+</head>
+<body>
+    <h1>Available Cars</h1>
+
+    <!-- Display main cars -->
+    <h2>Main Cars</h2>
+    <ul>
+        {% for car in cars %}
+            <li>
+                <h3>{{ car.year }} {{ car.make }} {{ car.model }}</h3>
+                <p>Price per day: ${{ car.price_per_day }}</p>
+                <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }}">
+            </li>
+        {% empty %}
+            <li>No cars available.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Display user-submitted cars -->
+    <h2>User-Submitted Cars</h2>
+    <ul>
+        {% for user_car in user_submitted_cars %}
+            <li>
+                <h3>{{ user_car.year }} {{ user_car.make }} {{ user_car.model }}</h3>
+                <p>Price per day: ${{ user_car.price_per_day }}</p>
+                <p>Submitted by: {{ user_car.owner_name }} ({{ user_car.owner_email }})</p>
+                <p>Description: {{ user_car.description }}</p>
+                <!-- Add more details as needed -->
+
+                <!-- Link to update car -->
+                <a href="{% url 'update_car' user_car.id %}" class="btn btn-primary">Update</a>
+                
+                <!-- Link to delete car -->
+                <a href="{% url 'delete_car' user_car.id %}" class="btn btn-danger">Delete</a>
+            </li>
+        {% empty %}
+            <li>No user-submitted cars available.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Button to submit a car -->
+    <a href="{% url 'submit_car' %}" class="btn btn-primary">Submit Your Car for Rent</a>
+</body>
+</html>
